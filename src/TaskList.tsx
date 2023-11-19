@@ -1,16 +1,17 @@
 import * as React from 'react';
+import { IEditTask, ITaskList, ITaskListProps } from '../lib/ITask';
 
-export default function TaskList({ taskList, setTaskList }) {
-  const [editTask, setEditTask] = React.useState({});
+const TaskList: React.FC<ITaskListProps> = ({ taskList, setTaskList }) => {
+  const [editTask, setEditTask] = React.useState<IEditTask>({});
 
-  const setEditTaskHandler = (taskId) => {
+  const setEditTaskHandler = (taskId: number) => {
     setEditTask((previousValue) => ({
       ...previousValue,
       [taskId]: true,
     }));
   };
 
-  const handleSave = (task) => {
+  const handleSave = (task: ITaskList) => {
     setEditTask((previousValue) => ({
       ...previousValue,
       [task.id]: false,
@@ -61,4 +62,7 @@ export default function TaskList({ taskList, setTaskList }) {
       </ul>
     </div>
   );
-}
+};
+
+
+export default TaskList;

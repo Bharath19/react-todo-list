@@ -1,11 +1,12 @@
 import * as React from 'react';
 import './style.css';
 import TaskList from './TaskList';
+import { ITaskList } from '../lib/ITask';
 
 export default function App() {
   const [task, setTask] = React.useState('');
-  const [taskList, setTaskList] = React.useState([]);
-  const inputElement = React.useRef<HTMLInputElement>();
+  const [taskList, setTaskList] = React.useState<ITaskList[]>([]);
+  const inputElement = React.useRef<HTMLInputElement>(null);
 
   return (
     <div>
@@ -23,7 +24,9 @@ export default function App() {
               { id: new Date().getTime(), value: task },
             ]);
             setTask('');
-            inputElement.current.focus();
+            if (inputElement.current) {
+              inputElement.current.focus();
+            }
           }}
         >
           Add a task
