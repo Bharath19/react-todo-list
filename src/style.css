@@ -1,0 +1,12 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
